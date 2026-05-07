@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sầu Riêng Ri6 Nhà Vườn | Đặt Hàng Online</title>
+  <meta name="description" content="Sầu riêng Ri6 nhà vườn, gom theo từng đợt chín, phân loại rõ A/B/C-D. Nhận lẻ và sỉ từ 10 trái." />
+  <style>
+    :root {
+      --bg: #101511;
+      --card: #182018;
+      --card-2: #202a20;
+      --green: #5fb85f;
+      --gold: #f5c451;
+      --text: #f7f7ef;
+      --muted: #cfd6c8;
+      --danger: #ff7b7b;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #223322 0%, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(16,21,17,.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--gold));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #101511;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #ffd977);
+      color: #16140b;
+      box-shadow: 0 8px 24px rgba(245,196,81,.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(245,196,81,.35);
+      border-radius: 999px;
+      color: #ffe39a;
+      background: rgba(245,196,81,.08);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .highlight { color: var(--gold); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0 0 26px;
+      max-width: 660px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .trust-item {
+      padding: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .durian-visual {
+      min-height: 380px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 55% 40%, rgba(245,196,81,.35), transparent 28%),
+        linear-gradient(135deg, #314229, #151d14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 24px;
+    }
+
+    .durian-emoji {
+      font-size: 150px;
+      filter: drop-shadow(0 18px 20px rgba(0,0,0,.35));
+    }
+
+    .price-badge {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(16,21,17,.82);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .price-badge strong {
+      color: var(--gold);
+      font-size: 22px;
+    }
+
+    section { padding: 54px 0; }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      margin: 0 0 12px;
+      letter-spacing: -.8px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 26px;
+      max-width: 760px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+
+    .grade {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #101511;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 30px;
+      font-weight: 900;
+      margin: 4px 0 10px;
+    }
+
+    .card p { color: var(--muted); margin: 0; }
+
+    .table-wrap {
+      overflow-x: auto;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { color: var(--gold); background: rgba(245,196,81,.06); }
+    tr:last-child td { border-bottom: 0; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .step {
+      display: flex;
+      gap: 14px;
+      padding: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .num {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #141006;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step strong { display: block; margin-bottom: 3px; }
+    .step span { color: var(--muted); }
+
+    form {
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      outline: none;
+      font-size: 15px;
+    }
+
+    select option { color: #111; }
+    textarea { min-height: 100px; resize: vertical; }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 12px 0 0;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .policy-item {
+      padding: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .policy-item strong { color: var(--gold); display: block; margin-bottom: 6px; }
+    .policy-item p { color: var(--muted); margin: 0; }
+
+    .cta-bottom {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(95,184,95,.18), rgba(245,196,81,.16));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 34px 20px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .floating-zalo {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      background: #0b8cff;
+      color: #fff;
+      padding: 13px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 14px 34px rgba(11,140,255,.35);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+      .trust-row { grid-template-columns: 1fr; }
+      .policy-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .durian-visual { min-height: 280px; }
+      .durian-emoji { font-size: 118px; }
+    }
+
+    @media (max-width: 560px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 46px; }
+      .btn { width: 100%; }
+      .floating-zalo { left: 16px; right: 16px; justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ĐỔI SỐ ĐIỆN THOẠI/ZALO Ở ĐÂY -->
+  <!-- Ví dụ link Zalo cá nhân: https://zalo.me/09xxxxxxxx -->
+
+  <header>
+    <div class="container nav">
+      <a href="#top" class="brand"><span>Ri6</span> Sầu Riêng Quê Em</a>
+      <nav class="nav-links">
+        <a href="#bang-gia">Bảng giá</a>
+        <a href="#nguon-hang">Nguồn hàng</a>
+        <a href="#chinh-sach">Chính sách</a>
+        <a href="#dat-hang">Đặt hàng</a>
+      </nav>
+      <a class="btn btn-primary" href="https://zalo.me/0939580802" target="_blank">Nhắn Zalo</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="tag">🌿 Loại sầu riêng: Ri6 nhà vườn</div>
+          <h1>Sầu riêng Ri6 <span class="highlight">gom theo từng đợt chín</span>, bán đúng loại.</h1>
+          <p>
+            Vườn có bao nhiêu em lấy bấy nhiêu, em gom theo từng đợt chín rồi mới bán nên hàng luôn rõ nguồn.
+            Có lẻ và sỉ từ 10 trái trở lên.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#dat-hang">Đặt hàng ngay</a>
+            <a class="btn btn-secondary" href="#bang-gia">Xem bảng giá</a>
+          </div>
+          <div class="trust-row">
+            <div class="trust-item"><strong>Rõ nguồn</strong> Lấy trực tiếp từ vườn/vựa quen.</div>
+            <div class="trust-item"><strong>Phân loại rõ</strong> A, B, C/D báo đúng tình trạng.</div>
+            <div class="trust-item"><strong>Có hỗ trợ</strong> Lỗi do shop sẽ hỗ trợ theo chính sách.</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="durian-visual">
+            <div class="durian-emoji" aria-label="Sầu riêng">🥭</div>
+            <div class="price-badge">
+              <div>Giá từ</div>
+              <strong>55k/kg</strong>
+              <div style="color: var(--muted); font-size: 14px;">Hàng C/D ăn gia đình, số lượng theo đợt hàng trong ngày.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bang-gia">
+      <div class="container">
+        <h2 class="section-title">Bảng giá sầu riêng Ri6 hôm nay</h2>
+        <p class="section-desc">Giá có thể thay đổi theo ngày và theo đợt hàng. Khách nhắn em để được báo hình/video hàng thực tế trước khi chốt đơn.</p>
+
+        <div class="cards">
+          <div class="card">
+            <div class="grade">A</div>
+            <h3>Hàng A</h3>
+            <div class="price">70k/kg</div>
+            <p>Trái đẹp, form đẹp, cơm ngon — phù hợp mua biếu/tặng hoặc ăn cần đẹp mã.</p>
+          </div>
+          <div class="card">
+            <div class="grade">B</div>
+            <h3>Hàng B</h3>
+            <div class="price">60k/kg</div>
+            <p>Trái khá đẹp, chất lượng ổn, phù hợp mua ăn gia đình hoặc làm quà đơn giản.</p>
+          </div>
+          <div class="card">
+            <div class="grade" style="background: var(--gold);">C/D</div>
+            <h3>Hàng C/D</h3>
+            <div class="price">55k/kg</div>
+            <p>Mã trái không đẹp bằng, có thể méo/xấu vỏ nhẹ nhưng vẫn ưu tiên chất lượng ăn gia đình.</p>
+          </div>
+        </div>
+
+        <div style="height: 18px;"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Số lượng</th>
+                <th>Giá áp dụng</th>
+                <th>Ghi chú</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1–4 trái</td>
+                <td>Giá lẻ</td>
+                <td>Phù hợp khách mua ăn thử hoặc ăn gia đình.</td>
+              </tr>
+              <tr>
+                <td>5–9 trái</td>
+                <td>Giá khách lấy nhiều</td>
+                <td>Em có thể hỗ trợ nhẹ tùy hàng trong ngày.</td>
+              </tr>
+              <tr>
+                <td>Từ 10 trái trở lên</td>
+                <td>Giá sỉ nhẹ: giảm 3k/kg</td>
+                <td>Phù hợp khách mua chung, shop trái cây, quán ăn, tiệm bánh.</td>
+              </tr>
+              <tr>
+                <td>Từ 20–30 trái trở lên</td>
+                <td>Báo giá riêng</td>
+                <td>Giá theo số lượng và tình trạng hàng trong ngày.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="nguon-hang">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">Nguồn hàng rõ, bán có sao nói vậy</h2>
+          <p class="section-desc">
+            Sầu riêng được lấy trực tiếp từ vườn/vựa quen. Em gom theo từng đợt chín, không mua hàng trôi nổi ngoài chợ rồi bán lại.
+            Trước khi giao, em sẽ tư vấn theo nhu cầu: ăn liền, mai ăn, mua biếu hoặc lấy sỉ.
+          </p>
+          <a class="btn btn-primary" href="#dat-hang">Gửi thông tin đặt hàng</a>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="num">1</div><div><strong>Khách nhắn nhu cầu</strong><span>Ăn gia đình, mua biếu, ăn hôm nay/mai hay lấy sỉ.</span></div></div>
+          <div class="step"><div class="num">2</div><div><strong>Em kiểm hàng thực tế</strong><span>Gửi hình/video lô hàng trong ngày nếu cần.</span></div></div>
+          <div class="step"><div class="num">3</div><div><strong>Chốt loại phù hợp</strong><span>A, B hoặc C/D theo ngân sách và mục đích mua.</span></div></div>
+          <div class="step"><div class="num">4</div><div><strong>Giao hàng nhanh</strong><span>Ưu tiên giao sớm để giữ chất lượng trái.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="chinh-sach">
+      <div class="container">
+        <h2 class="section-title">Chính sách mua hàng</h2>
+        <p class="section-desc">Vì sầu riêng là trái cây tươi, shop công khai chính sách để hai bên rõ ràng và yên tâm trước khi đặt.</p>
+        <div class="policy-grid">
+          <div class="policy-item"><strong>Hỗ trợ lỗi</strong><p>Shop hỗ trợ nếu trái sượng nặng, sống, hư/thối do lỗi từ shop.</p></div>
+          <div class="policy-item"><strong>Không hỗ trợ</strong><p>Không hỗ trợ khi để quá lâu, bảo quản sai, hoặc không có video mở trái.</p></div>
+          <div class="policy-item"><strong>Hàng giá tốt</strong><p>Hàng chín nhanh/giá tốt sẽ được báo rõ trước, khách nên ăn sớm.</p></div>
+          <div class="policy-item"><strong>Cam kết</strong><p>Bán đúng loại, đúng tình trạng, có sao nói vậy. Uy tín hơn một đơn hàng.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dat-hang">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">Form đặt hàng</h2>
+          <p class="section-desc">
+            Khách để lại thông tin, em sẽ kiểm tra hàng thực tế trong ngày rồi liên hệ lại để tư vấn loại phù hợp nhất.
+          </p>
+        </div>
+
+        <!-- ĐỔI emailcuaban@gmail.com THÀNH EMAIL CỦA BẠN -->
+        <form action="https://formsubmit.co/nguyennhat070596@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Đơn đặt sầu riêng Ri6 mới" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Họ tên</label>
+              <input id="name" name="Họ tên" type="text" placeholder="Nguyễn Văn A" required />
+            </div>
+            <div class="field">
+              <label for="phone">SĐT/Zalo</label>
+              <input id="phone" name="SĐT/Zalo" type="tel" placeholder="09xxxxxxxx" required />
+            </div>
+            <div class="field">
+              <label for="area">Khu vực giao</label>
+              <input id="area" name="Khu vực giao" type="text" placeholder="TP.HCM, Bình Dương..." required />
+            </div>
+            <div class="field">
+              <label for="type">Loại muốn mua</label>
+              <select id="type" name="Loại muốn mua" required>
+                <option value="">Chọn loại</option>
+                <option>Hàng A - 70k/kg</option>
+                <option>Hàng B - 60k/kg</option>
+                <option>Hàng C/D - 55k/kg</option>
+                <option>Chưa biết, cần tư vấn</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="quantity">Số lượng</label>
+              <input id="quantity" name="Số lượng" type="text" placeholder="2 trái / 10kg / 10 trái" required />
+            </div>
+            <div class="field">
+              <label for="purpose">Mục đích mua</label>
+              <select id="purpose" name="Mục đích mua">
+                <option>Ăn gia đình</option>
+                <option>Mua biếu/tặng</option>
+                <option>Lấy sỉ từ 10 trái</option>
+                <option>Mua chung</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="eat-time">Muốn ăn khi nào?</label>
+              <select id="eat-time" name="Muốn ăn khi nào">
+                <option>Ăn hôm nay</option>
+                <option>Ăn ngày mai</option>
+                <option>Ăn sau 2–3 ngày</option>
+                <option>Shop tư vấn giúp</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="contact-time">Thời gian tiện liên hệ</label>
+              <input id="contact-time" name="Thời gian tiện liên hệ" type="text" placeholder="Ví dụ: sau 18h" />
+            </div>
+            <div class="field full">
+              <label for="note">Ghi chú</label>
+              <textarea id="note" name="Ghi chú" placeholder="Ví dụ: thích cơm khô, béo, ít ngọt, cần trái đẹp để biếu..."></textarea>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" style="width: 100%; margin-top: 16px;" type="submit">Gửi đơn đặt hàng</button>
+          <p class="note">Gửi form xong, em sẽ liên hệ lại để xác nhận hàng và giá trong ngày.</p>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-bottom">
+          <h2 class="section-title">Cần Ri6 ăn gia đình, mua biếu hay lấy sỉ?</h2>
+          <p class="section-desc" style="margin-left:auto; margin-right:auto;">Nhắn em để được báo hàng thực tế trong ngày. Có sao em báo vậy, bán đúng loại, đúng tình trạng.</p>
+          <a class="btn btn-primary" href="https://zalo.me/09xxxxxxxx" target="_blank">Nhắn Zalo đặt hàng</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Sầu Riêng Quê Em. Bán sầu riêng Ri6 nhà vườn, rõ nguồn, rõ loại.
+    </div>
+  </footer>
+
+  <a class="floating-zalo" href="https://zalo.me/09xxxxxxxx" target="_blank">Nhắn Zalo đặt hàng</a>
+</body>
+</html>
