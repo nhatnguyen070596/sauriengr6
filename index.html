@@ -510,7 +510,6 @@
               <strong>55k/kg</strong>
               <div style="color: var(--muted); font-size: 14px;">Hàng C/D ăn gia đình, số lượng theo đợt hàng trong ngày.</div>
             </div>
-          </div>
         </div>
       </div>
     </section>
@@ -605,7 +604,7 @@
     <section id="hinh-anh">
       <div class="container">
         <h2 class="section-title">Hình ảnh thực tế</h2>
-		
+
         <div class="gallery">
           <img src="images/hinh-1.jpg" alt="Sầu riêng Ri6 hình thực tế 1">
           <img src="images/hinh-2.jpg" alt="Sầu riêng Ri6 hình thực tế 2">
@@ -641,27 +640,24 @@
           </p>
         </div>
 
-        <form action="https://formsubmit.co/nguyennhat070596@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Đơn đặt sầu riêng Ri6 mới" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
+        <form id="orderForm">
 
           <div class="form-grid">
             <div class="field">
               <label for="name">Họ tên</label>
-              <input id="name" name="Họ tên" type="text" placeholder="Nguyễn Văn A" required />
+              <input id="name" name="name" type="text" placeholder="Nguyễn Văn A" required />
             </div>
             <div class="field">
               <label for="phone">SĐT/Zalo</label>
-              <input id="phone" name="SĐT/Zalo" type="tel" placeholder="09xxxxxxxx" required />
+              <input id="phone" name="phone" type="tel" placeholder="09xxxxxxxx" required />
             </div>
             <div class="field">
               <label for="area">Khu vực giao</label>
-              <input id="area" name="Khu vực giao" type="text" placeholder="TP.HCM, Bình Dương..." required />
+              <input id="area" name="area" type="text" placeholder="TP.HCM, Bình Dương..." required />
             </div>
             <div class="field">
               <label for="type">Loại muốn mua</label>
-              <select id="type" name="Loại muốn mua" required>
+              <select id="type" name="type" required>
                 <option value="">Chọn loại</option>
                 <option>Hàng A - 70k/kg</option>
                 <option>Hàng B - 60k/kg</option>
@@ -671,11 +667,11 @@
             </div>
             <div class="field">
               <label for="quantity">Số lượng</label>
-              <input id="quantity" name="Số lượng" type="text" placeholder="2 trái / 10kg / 10 trái" required />
+              <input id="quantity" name="quantity" type="text" placeholder="2 trái / 10kg / 10 trái" required />
             </div>
             <div class="field">
               <label for="purpose">Mục đích mua</label>
-              <select id="purpose" name="Mục đích mua">
+              <select id="purpose" name="purpose">
                 <option>Ăn gia đình</option>
                 <option>Mua biếu/tặng</option>
                 <option>Lấy sỉ từ 10 trái</option>
@@ -684,7 +680,7 @@
             </div>
             <div class="field">
               <label for="eat-time">Muốn ăn khi nào?</label>
-              <select id="eat-time" name="Muốn ăn khi nào">
+              <select id="eat-time" name="eatTime">
                 <option>Ăn hôm nay</option>
                 <option>Ăn ngày mai</option>
                 <option>Ăn sau 2–3 ngày</option>
@@ -693,11 +689,11 @@
             </div>
             <div class="field">
               <label for="contact-time">Thời gian tiện liên hệ</label>
-              <input id="contact-time" name="Thời gian tiện liên hệ" type="text" placeholder="Ví dụ: sau 18h" />
+              <input id="contact-time" name="contactTime" type="text" placeholder="Ví dụ: sau 18h" />
             </div>
             <div class="field full">
               <label for="note">Ghi chú</label>
-              <textarea id="note" name="Ghi chú" placeholder="Ví dụ: thích cơm khô, béo, ít ngọt, cần trái đẹp để biếu..."></textarea>
+              <textarea id="note" name="note" placeholder="Ví dụ: thích cơm khô, béo, ít ngọt, cần trái đẹp để biếu..."></textarea>
             </div>
           </div>
 
@@ -725,5 +721,51 @@
   </footer>
 
   <a class="floating-zalo" href="https://zalo.me/0939580802" target="_blank">Nhắn Zalo đặt hàng</a>
+  <script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyeAvne499qAJeJ-keUGdZoGcuW0aiAG6DA0HV5B1IlFkTXiRobf92FR7wV-Anm-PIE/exec";
+
+    const orderForm = document.getElementById("orderForm");
+
+    orderForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const submitButton = orderForm.querySelector("button[type='submit']");
+      submitButton.disabled = true;
+      submitButton.textContent = "Đang gửi đơn...";
+
+      const formData = new FormData(orderForm);
+
+      const data = {
+        name: formData.get("name"),
+        phone: formData.get("phone"),
+        area: formData.get("area"),
+        type: formData.get("type"),
+        quantity: formData.get("quantity"),
+        purpose: formData.get("purpose"),
+        eatTime: formData.get("eatTime"),
+        contactTime: formData.get("contactTime"),
+        note: formData.get("note")
+      };
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+
+        alert("Em đã nhận thông tin đặt hàng. Em sẽ liên hệ lại để xác nhận hàng và giá trong ngày nha!");
+        orderForm.reset();
+      } catch (error) {
+        alert("Có lỗi khi gửi đơn. Anh/chị vui lòng nhắn Zalo trực tiếp giúp em nha.");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Gửi đơn đặt hàng";
+      }
+    });
+  </script>
 </body>
 </html>
